@@ -11,3 +11,9 @@ spring:
             - Path=/books/**
           filters:
             - PrefixPath=/api/v1
+        - id: order_route
+          uri: http://order-service
+          predicates:
+            - Path=/orders/**
+          filters:
+            - PrefixPath=/api/v1

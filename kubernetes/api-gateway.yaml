@@ -1,3 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: dnipro-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: dnipro-external-ip
+spec:
+  backend:
+    serviceName: api-gateway
+    servicePort: 80
+
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -5,13 +17,13 @@ metadata:
   labels:
     app: api-gateway
 spec:
+  type: NodePort
   ports:
     - port: 80
       targetPort: 8080
       protocol: TCP
   selector:
     app: api-gateway
-  type: NodePort
 
 ---
 apiVersion: apps/v1
@@ -28,8 +40,7 @@ spec:
         app: api-gateway
     spec:
       containers:
-        - image: api-gateway:0.0.1
-          imagePullPolicy: Never # remove for not local k8s
+        - image: gcr.io/dnipro-store/api-gateway:0.0.2
           name: api-gateway
           env:
             - name: SPRING_PROFILES_ACTIVE
