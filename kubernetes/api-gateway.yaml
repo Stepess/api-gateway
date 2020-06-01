@@ -40,7 +40,7 @@ spec:
         app: api-gateway
     spec:
       containers:
-        - image: gcr.io/dnipro-store/api-gateway:0.0.2
+        - image: gcr.io/dnipro-store/api-gateway:0.0.4
           name: api-gateway
           env:
             - name: SPRING_PROFILES_ACTIVE

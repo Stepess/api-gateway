@@ -6,19 +6,19 @@ spring:
     gateway:
       routes:
         - id: book_route
-          uri: http://book-service
+          uri: http://book-service:8080
           predicates:
             - Path=/books/**
           filters:
             - PrefixPath=/api/v1
         - id: order_route
-          uri: http://order-service
+          uri: http://order-service:8080
           predicates:
             - Path=/orders/**
           filters:
             - PrefixPath=/api/v1
         - id: user_route
-          uri: http://user-service
+          uri: http://user-service:8080
           predicates:
             - Path=/users/**
           filters:
