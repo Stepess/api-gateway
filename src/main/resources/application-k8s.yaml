@@ -23,3 +23,9 @@ spring:
             - Path=/users/**
           filters:
             - PrefixPath=/api/v3
+        - id: cart_route
+          uri: http://${CART_PUBLIC_ENDPOINT}
+          predicates:
+            - Path=/cart/**
+          filters:
+            - PrefixPath=/api/v1

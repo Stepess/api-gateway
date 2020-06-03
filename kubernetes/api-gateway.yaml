@@ -40,10 +40,12 @@ spec:
         app: api-gateway
     spec:
       containers:
-        - image: gcr.io/dnipro-store/api-gateway:0.0.4
+        - image: gcr.io/dnipro-store/api-gateway:0.0.7
           name: api-gateway
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: k8s
+            - name: CART_PUBLIC_ENDPOINT
+              value: 34.90.13.131
           ports:
             - containerPort: 8080
