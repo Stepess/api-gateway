@@ -46,6 +46,6 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               value: k8s
             - name: CART_PUBLIC_ENDPOINT
-              value: 34.90.13.131
+              value: 34.120.97.2
           ports:
             - containerPort: 8080
